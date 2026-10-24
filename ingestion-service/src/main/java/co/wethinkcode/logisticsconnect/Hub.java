@@ -1,5 +1,9 @@
 package co.wethinkcode.logisticsconnect;
 
+/**
+ * This class is a real world representation of a hub.
+ * A hub is warehouse where packages arrive, get sorted and are sent to their next destination.
+ */
 public class Hub {
     private final String hubId;
     private final String province;

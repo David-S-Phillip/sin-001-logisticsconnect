@@ -7,6 +7,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class takes in the .csv file inside the resources folder
+ * Use one method called readRawRows()
+ * it returns a List of array strings --> similar to a table format
+ */
 public class CsvFileReader {
 
     public List<String[]> readRawRows(String resourcePath) {
