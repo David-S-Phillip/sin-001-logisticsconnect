@@ -92,3 +92,9 @@ curl http://localhost:7050/health   # -> OK
 
 To add real tests, add JUnit 5 + the Surefire plugin to `pom.xml`, put tests under
 `src/test/java/co/wethinkcode/logisticsconnect/`, and run `mvn test`.
+
+# Test curl commands 
+
+curl -s http://localhost:7050/hubs | jq
+
+curl http://localhost:7050/health
