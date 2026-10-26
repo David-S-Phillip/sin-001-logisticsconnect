@@ -2,7 +2,7 @@ hub_id, Province ,sorting_center,active
 H-500, Gauteng ,Johannesburg Central,Y
 h-501,Western Cape,Cape Town Port,yes
 H-502 ,gauteng,Pretoria North,0
-H-503,KwaZulu-Natal,Durban Harbour,Y
+H-503,KwaZulu-Natal,Durban Harbour, Y
 H-504,Gauteng,Johannesburg Central,true
 H-505,Western Cape ,Cape Town  Port,TRUE
 H-506,Kwa-Zulu Natal,Durban Harbour,1

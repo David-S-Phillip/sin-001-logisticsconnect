@@ -1,13 +1,15 @@
 package co.wethinkcode.logisticsconnect;
 
+import co.wethinkcode.logisticsconnect.server.TransitServiceServer;
 import io.javalin.Javalin;
 
 public class TransitServiceApp {
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create().start(7053);
+        TransitServiceServer server = new TransitServiceServer();
 
-        app.get("/health", ctx -> ctx.result("OK"));
+        server.start(7053);
+        System.out.println("TransitServiceApp running on http://localhost:7053");
 
         // TODO (Calculates estimated arrival windows based on hub and delay stage.)
         // Add domain endpoints for transit-service here.

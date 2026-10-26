@@ -39,12 +39,29 @@ public class DelayStageServer {
 
     private void updateDelayStage(Context ctx) {
         String hubId = ctx.pathParam("hubId");
+        try {
+            // Validate against the source of truth
+            java.net.http.HttpClient client = java.net.http.HttpClient.newHttpClient();
+            java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder()
+                    .uri(java.net.URI.create("http://localhost:7051/hub/" + hubId))
+                    .GET()
+                    .build();
 
-        // Javalin automatically uses Jackson to map the JSON body {"stage": 3} to this object
-        StageUpdate update = ctx.bodyAsClass(StageUpdate.class);
-        stageCache.put(hubId, update.getStage());
+            java.net.http.HttpResponse<String> response = client.send(request, java.net.http.HttpResponse.BodyHandlers.ofString());
 
-        ctx.status(200).result("Updated " + hubId + " to stage " + update.getStage());
+            if (response.statusCode() == 404) {
+                ctx.status(400).result("Bad Request: Hub ID " + hubId + " does not exist.");
+                return; // Stop execution, do not save to cache
+            }
+
+            // Hub is valid, proceed with Jackson mapping and cache update
+            StageUpdate update = ctx.bodyAsClass(StageUpdate.class);
+            stageCache.put(hubId, update.getStage());
+            ctx.status(200).result("Updated " + hubId + " to stage " + update.getStage());
+
+        } catch (Exception e) {
+            ctx.status(500).result("Error validating hub: " + e.getMessage());
+        }
     }
 
     // --- DTOs (Data Transfer Objects) for Jackson Serialization ---

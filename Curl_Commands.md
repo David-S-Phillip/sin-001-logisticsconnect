@@ -34,8 +34,9 @@ curl http://localhost:7052/health
 # -> OK (Verifies the Delay Service is active and running)
 ```
 ```bash
-curl -X POST http://localhost:7052/delay-stage/005 -d "level=5"
-# -> Posts a delay penalty of level 5 to hub 005 (simulating a breakdown).
+curl -X POST http://localhost:7052/delay-stage/005 \
+  -H "Content-Type: application/json" \
+  -d '{"stage": 5}'
 ```
 
 ```bash

@@ -2,8 +2,8 @@ package co.wethinkcode.logisticsconnect;
 
 public class HubMapper {
     /**
-     * This method is meant to read each line of the csv file, then map each iterm to a variable.
-     * We run each variable through a "cleaner method" basically methods that ensure perfect strings can be used to create a instance of Hub.
+     * This method is meant to read each line of the csv file, then map each item to a variable.
+     * We run each variable through a "cleaner method" basically methods that ensure perfect strings can be used to create an instance of Hub.
      * @param columns
      * @return Hub(cleanID, cleanProvince, cleanCenter, cleanActive)
      */
